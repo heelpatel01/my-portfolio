@@ -1,20 +1,27 @@
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Github, Linkedin, Code2, ExternalLink, Mail, Phone, MapPin, User, Briefcase, Code } from 'lucide-react'
+import Image from 'next/image'
+import { ReactNode } from 'react'
 
-interface GlassCardProps {
-  children: ReactNode;
-  className?: string;
+interface Project {
+  title: string;
+  description: string;
+  techStack: string;
+  demoUrl: string;
+  repoUrl: string;
+  imageUrl: string;
+  youtubeId?: string;
 }
 
-const projects = [
+const projects: Project[] = [
   {
     title: "Crypto Compass",
     description: "A comprehensive trading platform for beginners with virtual money, live charts, and portfolio management.",
     techStack: "React.js, Node.js, MongoDB, CoinGecko API",
     demoUrl: "https://example.com/crypto-compass",
     repoUrl: "https://github.com/yourusername/crypto-compass",
-    imageUrl: "/placeholder.svg?height=200&width=300",
+    imageUrl: "/placeholder.svg",
     youtubeId: "c6DFE5XKaIk",
   },
   {
@@ -23,7 +30,7 @@ const projects = [
     techStack: "React.js, Node.js, Express, MongoDB, Socket.io, Prism.js",
     demoUrl: "https://example.com/devtalkz",
     repoUrl: "https://github.com/yourusername/devtalkz",
-    imageUrl: "/placeholder.svg?height=200&width=300",
+    imageUrl: "/placeholder.svg",
     youtubeId:"v0Lq4VF8buw"
   },
   {
@@ -40,16 +47,16 @@ const projects = [
     techStack: "TypeScript, Next.js, Tailwind CSS, OpenAI API, Upstash, Redis",
     demoUrl: "https://example.com/site-buddy",
     repoUrl: "https://github.com/yourusername/site-buddy",
-    imageUrl: "/placeholder.svg?height=200&width=300",
+    imageUrl: "/placeholder.svg",
     youtubeId:"rVkStPfsg2I"
   },
   {
     title: "Full Stack Notes App",
     description: "A feature-rich notes app with CRUD functionality, real-time sync, and mind map visualization.",
     techStack: "MongoDB, React.js, Node.js, Express.js, GraphQL, JWT",
-    demoUrl: "https://i.pinimg.com/originals/7a/fe/01/7afe01d2cc84a926780f70a58857cf70.jpg",
-    repoUrl: "https://i.pinimg.com/originals/7a/fe/01/7afe01d2cc84a926780f70a58857cf70.jpg",
-    imageUrl: "https://i.pinimg.com/originals/7a/fe/01/7afe01d2cc84a926780f70a58857cf70.jpg",
+    demoUrl: "",
+    repoUrl: "",
+    imageUrl: "",
   },
 ]
 
@@ -138,9 +145,12 @@ export default function RefactoredPortfolio() {
   )
 }
 
+interface GlassCardProps {
+  children: ReactNode;
+  className?: string;
+}
 
-
-function GlassCard({ children, className = '' }:GlassCardProps) {
+function GlassCard({ children, className = '' }: GlassCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -166,8 +176,8 @@ function SkillCategory({ title, skills }: { title: string; skills: string[] }) {
   )
 }
 
-function ProjectsGrid({ projects }) {
-  const [selectedProject, setSelectedProject] = useState(null)
+function ProjectsGrid({ projects }: { projects: Project[] }) {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -190,7 +200,14 @@ function ProjectsGrid({ projects }) {
               ></iframe>
             </div>
           ) : (
-            <img src={project.imageUrl} alt={project.title} className="w-full h-48 object-cover" />
+            <div className="relative w-full h-48">
+              <Image
+                src={project.imageUrl}
+                alt={project.title}
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
           )}
           <div className="p-4">
             <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
@@ -218,7 +235,7 @@ function ProjectsGrid({ projects }) {
   )
 }
 
-function ProjectModal({ project, onClose }) {
+function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -246,7 +263,15 @@ function ProjectModal({ project, onClose }) {
             ></iframe>
           </div>
         ) : (
-          <img src={project.imageUrl} alt={project.title} className="w-full h-48 object-cover rounded-lg mb-4" />
+          <div className="relative w-full h-48 mb-4">
+            <Image
+              src={project.imageUrl}
+              alt={project.title}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-lg"
+            />
+          </div>
         )}
         <p className="text-gray-300 mb-4">{project.description}</p>
         <p className="text-gray-400 mb-4"><strong>Tech Stack:</strong> {project.techStack}</p>
