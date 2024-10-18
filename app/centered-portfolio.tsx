@@ -1,8 +1,19 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Github, Linkedin, Code2, ExternalLink, Mail, Phone, MapPin, User, Briefcase, Code } from 'lucide-react'
-import Image from 'next/image'
-import { ReactNode } from 'react'
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Github,
+  Linkedin,
+  Code2,
+  ExternalLink,
+  Mail,
+  Phone,
+  MapPin,
+  User,
+  Briefcase,
+  Code,
+} from "lucide-react";
+import Image from "next/image";
+import { ReactNode } from "react";
 
 interface Project {
   title: string;
@@ -17,7 +28,8 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Crypto Compass",
-    description: "A comprehensive trading platform for beginners with virtual money, live charts, and portfolio management.",
+    description:
+      "A comprehensive trading platform for beginners with virtual money, live charts, and portfolio management.",
     techStack: "React.js, Node.js, MongoDB, CoinGecko API",
     demoUrl: "https://new-crypto-compass.vercel.app/",
     repoUrl: "https://github.com/yourusername/crypto-compass",
@@ -26,16 +38,18 @@ const projects: Project[] = [
   },
   {
     title: "DevTalkZ",
-    description: "An open-source chat app for developers with custom channels, code sharing, and real-time collaboration.",
+    description:
+      "An open-source chat app for developers with custom channels, code sharing, and real-time collaboration.",
     techStack: "React.js, Node.js, Express, MongoDB, Socket.io, Prism.js",
     demoUrl: "https://slack-clone-one-ivory.vercel.app/",
     repoUrl: "https://github.com/yourusername/devtalkz",
     imageUrl: "/placeholder.svg",
-    youtubeId:"v0Lq4VF8buw"
+    youtubeId: "v0Lq4VF8buw",
   },
   {
     title: "KisanSetu",
-    description: "An online platform connecting farmers directly with consumers, featuring product listing and order management.",
+    description:
+      "An online platform connecting farmers directly with consumers, featuring product listing and order management.",
     techStack: "React.js, Node.js, Express, MongoDB, Redux, Stripe API",
     demoUrl: "https://kisan-setu.vercel.app/",
     repoUrl: "https://github.com/yourusername/kisansetu",
@@ -43,22 +57,24 @@ const projects: Project[] = [
   },
   {
     title: "Site Buddy",
-    description: "An AI-powered tool for website interaction, providing context-aware responses to user queries.",
+    description:
+      "An AI-powered tool for website interaction, providing context-aware responses to user queries.",
     techStack: "TypeScript, Next.js, Tailwind CSS, OpenAI API, Upstash, Redis",
     demoUrl: "https://site-buddy-mauve.vercel.app/",
     repoUrl: "https://github.com/yourusername/site-buddy",
     imageUrl: "/placeholder.svg",
-    youtubeId:"rVkStPfsg2I"
+    youtubeId: "rVkStPfsg2I",
   },
   {
     title: "Full Stack Notes App",
-    description: "A feature-rich notes app with CRUD functionality, real-time sync, and mind map visualization.",
+    description:
+      "A feature-rich notes app with CRUD functionality, real-time sync, and mind map visualization.",
     techStack: "MongoDB, React.js, Node.js, Express.js, GraphQL, JWT",
     demoUrl: "https://notes-app-nine-alpha.vercel.app/",
     repoUrl: "",
     imageUrl: "",
   },
-]
+];
 
 export default function RefactoredPortfolio() {
   return (
@@ -66,29 +82,41 @@ export default function RefactoredPortfolio() {
       <div className="w-full max-w-4xl">
         <header className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold mb-2">Heel Patel</h1>
-          <p className="text-xl md:text-2xl text-gray-300">Innovative Software Developer</p>
+          <p className="text-xl md:text-2xl text-gray-300">
+            Innovative Software Developer
+          </p>
         </header>
 
         <GlassCard className="mb-12">
-          <h2 className="text-2xl font-bold mb-4 flex items-center"><User className="mr-2" /> About Me</h2>
+          <h2 className="text-2xl font-bold mb-4 flex items-center">
+            <User className="mr-2" /> About Me
+          </h2>
           <p className="text-gray-300">
-            Innovative Software Developer with a passion for creating cutting-edge software solutions. 
-            Adept at problem-solving and driven by the challenge of tackling complex issues, 
-            I thrive in building impactful and efficient software applications.
+            Innovative Software Developer with a passion for creating
+            cutting-edge software solutions. Adept at problem-solving and driven
+            by the challenge of tackling complex issues, I thrive in building
+            impactful and efficient software applications.
           </p>
         </GlassCard>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           <GlassCard>
-            <h2 className="text-2xl font-bold mb-4 flex items-center"><Briefcase className="mr-2" /> Skills</h2>
+            <h2 className="text-2xl font-bold mb-4 flex items-center">
+              <Briefcase className="mr-2" /> Skills
+            </h2>
             <div className="grid grid-cols-2 gap-4">
-              <SkillCategory title="Languages" skills={['JavaScript', 'TypeScript', 'Python', 'Java']} />
-              <SkillCategory title="Databases" skills={['MongoDB','SQL']} />
+              <SkillCategory
+                title="Languages"
+                skills={["JavaScript", "TypeScript", "Python", "Java"]}
+              />
+              <SkillCategory title="Databases" skills={["MongoDB", "SQL"]} />
             </div>
           </GlassCard>
 
           <GlassCard>
-            <h2 className="text-2xl font-bold mb-4 flex items-center"><Code className="mr-2" /> Technologies</h2>
+            <h2 className="text-2xl font-bold mb-4 flex items-center">
+              <Code className="mr-2" /> Technologies
+            </h2>
             <ul className="list-disc list-inside text-gray-300 grid grid-cols-2 gap-2">
               <li>React.js</li>
               <li>React Native</li>
@@ -102,19 +130,29 @@ export default function RefactoredPortfolio() {
         </div>
 
         <GlassCard className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 flex items-center"><Code2 className="mr-2" /> Featured Projects</h2>
+          <h2 className="text-2xl font-bold mb-6 flex items-center">
+            <Code2 className="mr-2" /> Featured Projects
+          </h2>
           <ProjectsGrid projects={projects} />
         </GlassCard>
 
         <GlassCard className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 flex items-center"><Mail className="mr-2" /> Contact Me</h2>
+          <h2 className="text-2xl font-bold mb-6 flex items-center">
+            <Mail className="mr-2" /> Contact Me
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <a href="mailto:patelheel.dev@gmail.com" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+              <a
+                href="mailto:patelheel.dev@gmail.com"
+                className="flex items-center space-x-2 hover:text-blue-400 transition-colors"
+              >
                 <Mail size={20} />
                 <span>patelheel.dev@gmail.com</span>
               </a>
-              <a href="tel:+919714411841" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+              <a
+                href="tel:+919714411841"
+                className="flex items-center space-x-2 hover:text-blue-400 transition-colors"
+              >
                 <Phone size={20} />
                 <span>+91 9714411841</span>
               </a>
@@ -124,13 +162,28 @@ export default function RefactoredPortfolio() {
               </div>
             </div>
             <div className="flex space-x-6 items-center justify-center md:justify-end">
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+              <a
+                href="https://linkedin.com/in/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition-colors"
+              >
                 <Linkedin size={32} />
               </a>
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition-colors"
+              >
                 <Github size={32} />
               </a>
-              <a href="https://leetcode.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+              <a
+                href="https://leetcode.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition-colors"
+              >
                 <Code2 size={32} />
               </a>
             </div>
@@ -142,7 +195,7 @@ export default function RefactoredPortfolio() {
         </footer>
       </div>
     </div>
-  )
+  );
 }
 
 interface GlassCardProps {
@@ -150,7 +203,7 @@ interface GlassCardProps {
   className?: string;
 }
 
-function GlassCard({ children, className = '' }: GlassCardProps) {
+function GlassCard({ children, className = "" }: GlassCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -160,7 +213,7 @@ function GlassCard({ children, className = '' }: GlassCardProps) {
     >
       {children}
     </motion.div>
-  )
+  );
 }
 
 function SkillCategory({ title, skills }: { title: string; skills: string[] }) {
@@ -173,11 +226,11 @@ function SkillCategory({ title, skills }: { title: string; skills: string[] }) {
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 function ProjectsGrid({ projects }: { projects: Project[] }) {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -211,15 +264,27 @@ function ProjectsGrid({ projects }: { projects: Project[] }) {
           )}
           <div className="p-4">
             <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-            <p className="text-sm text-gray-300 line-clamp-2 mb-2">{project.description}</p>
+            <p className="text-sm text-gray-300 line-clamp-2 mb-2">
+              {project.description}
+            </p>
             <div className="text-xs text-gray-400 mb-2">
               <strong>Tech Stack:</strong> {project.techStack}
             </div>
             <div className="flex justify-between text-xs">
-              <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 flex items-center">
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 flex items-center"
+              >
                 <ExternalLink size={12} className="mr-1" /> Live Demo
               </a>
-              <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 flex items-center">
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-400 hover:text-green-300 flex items-center"
+              >
                 <Github size={12} className="mr-1" /> Source Code
               </a>
             </div>
@@ -228,14 +293,23 @@ function ProjectsGrid({ projects }: { projects: Project[] }) {
       ))}
       <AnimatePresence>
         {selectedProject && (
-          <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+          <ProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }
 
-function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+function ProjectModal({
+  project,
+  onClose,
+}: {
+  project: Project;
+  onClose: () => void;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -274,7 +348,9 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           </div>
         )}
         <p className="text-gray-300 mb-4">{project.description}</p>
-        <p className="text-gray-400 mb-4"><strong>Tech Stack:</strong> {project.techStack}</p>
+        <p className="text-gray-400 mb-4">
+          <strong>Tech Stack:</strong> {project.techStack}
+        </p>
         <div className="flex justify-between">
           <a
             href={project.repoUrl}
@@ -297,5 +373,5 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </div>
       </motion.div>
     </motion.div>
-  )
+  );
 }
