@@ -1,6 +1,11 @@
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Github, Linkedin, Code2, ExternalLink, Mail, Phone, MapPin, User, Briefcase, Code } from 'lucide-react'
+
+interface GlassCardProps {
+  children: ReactNode;
+  className?: string;
+}
 
 const projects = [
   {
@@ -133,7 +138,9 @@ export default function RefactoredPortfolio() {
   )
 }
 
-function GlassCard({ children, className = '' }) {
+
+
+function GlassCard({ children, className = '' }:GlassCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
